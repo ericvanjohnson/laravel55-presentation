@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('whoops', function() {
+    // forget to import Carbon
+    return Carbon::now();
+});
+
+Route::get('welcome', function () {
+    return new App\Mail\UserWelcome;
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
