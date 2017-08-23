@@ -38,6 +38,7 @@
                             </div>
                         </div>
 
+                        <!--
                         <div class="form-group{{ $errors->has('injection') ? ' has-error' : '' }}">
                             <label for="injection" class="col-md-4 control-label">injection</label>
 
@@ -51,6 +52,8 @@
                                 @endif
                             </div>
                         </div>
+
+                        -->
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
