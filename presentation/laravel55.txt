@@ -8,7 +8,38 @@
 
 - New `vendor:publish` not has "Prompts"
 
-- Rendering Mailables in the Browser, making it easier to edit and view email before sending them out. `php artisan UserWelcome make:mail --markdown=emails.welcome`
+- Packages now have the ability to Autowire into your application via composer 
+    ```
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "The\\Dark\\Knight\\BatmanServiceProvider"
+                ],
+                "aliases": {
+                    "Bar": "The\\Dark\\Knight\\Batman"
+                }
+            }
+        }
+    ```
 
-    - Sample `http://laravel55.dev/cancel`
+- Frontend Presets
+    - `php artisan preset react`   Types: type (none, bootstrap, vue, react)
+
+- New migration command `php artisan migrate:fresh`
+
+- Rendering Mailables in the Browser, making it easier to edit and view email before sending them out. `php artisan  make:mail UserWelcome --markdown=emails.welcome`
+
+- Sample `http://laravel55.dev/welcome`
+
+- Streamline Validation -- Demo using Post
+
+- New `make:factory` command to generate a Factory. `php artisan make:factory PostFactory`
+
+- Commands are now also autowired into the system
+
+- Collection Dumping
+    - Make sure you have users in the database `factory(App\User::class, 200)->create()`
+
+
+
 

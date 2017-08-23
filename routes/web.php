@@ -1,16 +1,4 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,4 +14,42 @@ Route::get('welcome', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
+
+Route::get('post', 'PostController@index')->name('post.get');
+
+Route::post('post', 'PostController@store')->name('post.post');
+
+
+
+
+// Custom Validation
+Route::get('custom', function() {
+    return view('custom');
+})->name('custom.get');
+
+Route::post('custom', function() {
+
+    request()->validate([
+        'name' => 'required',
+        // 'name' => new App\Rules\NoJohns,
+    ]);
+
+    return 'POSTED';
+})->name('custom.post');
+
+
+
+
+// Collection Dumping
+Route::get('collection', function() {
+
+    $users = App\User::all();
+
+    $users = $users
+        ->shuffle()
+        ->where('id','<',10)
+        ->pluck('name');
+
+    dd($users);
+});

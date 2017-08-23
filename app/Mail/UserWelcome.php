@@ -11,7 +11,6 @@ class UserWelcome extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $theme = 'sdlug';
 
     /**
      * Create a new message instance.
