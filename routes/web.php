@@ -1,7 +1,4 @@
 <?php
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('whoops', function() {
     // forget to import Carbon
@@ -12,7 +9,13 @@ Route::get('welcome', function () {
     return new App\Mail\UserWelcome;
 });
 
+
 Auth::routes();
+
+
+// Samples
+
+Route::view('/', 'welcome');
 
 Route::get('home', 'HomeController@index')->name('home');
 
@@ -24,9 +27,7 @@ Route::post('post', 'PostController@store')->name('post.post');
 
 
 // Custom Validation
-Route::get('custom', function() {
-    return view('custom');
-})->name('custom.get');
+Route::view('custom', 'custom')->name('custom.get');
 
 Route::post('custom', function() {
 
@@ -52,4 +53,14 @@ Route::get('collection', function() {
         ->pluck('name');
 
     dd($users);
+});
+
+
+
+// Custom Blade
+Route::get('directive', function () {
+
+    // auth()->loginUsingId(1);
+
+    return view('directive');
 });

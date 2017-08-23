@@ -13,7 +13,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Blade::if('member', function () {
+
+            // Needs to return a BOOLEAN
+            return auth()->check();
+
+        });
+
+
+        \Blade::if('environment', function ($env) {
+
+            return app()->environment($env);
+
+        });
     }
 
     /**
